@@ -60,10 +60,12 @@ function parseStatusFile(filePath, writeLocation) {
 
   // make a second pass to add forwardDependencies
   packages.forEach(pac => {
-    pac.dependencies.forEach(dep => {
-      // Not all dependencies are necessarily installed so have to check for it
-      let dependency = packages.find(x => x.name === dep);
-      if (dependency != undefined) dependency.forwardDependencies.push(pac.name);
+    pac.dependencies.forEach(depCol => {
+      depCol.forEach(dep => {
+        // Not all dependencies are necessarily installed so have to check for it
+        let dependency = packages.find(x => x.name === dep);
+        if (dependency !== undefined) dependency.forwardDependencies.push([pac.name]);
+      })
     });
   });
 

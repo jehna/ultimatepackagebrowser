@@ -6,11 +6,19 @@ const PackageDependencyList = ({ packList, setCurPackage, exists }) => {
       <ul>
         {packList.map(packs => (
           <li key={packs}>
-            {packs.map(pack =>
+            {packs.map(pack => (
               <span key={pack}>
-                {exists(pack) ? <button key={pack} onClick={() => setCurPackage(pack)}>{pack}</button> : <button key={pack}>{pack}</button>}
+                {exists(pack) ? (
+                  <button className={"button"} key={pack} onClick={() => setCurPackage(pack)}>
+                    {pack}
+                  </button>
+                ) : (
+                  <button className={"button disabled"} key={pack}>
+                    {pack}
+                  </button>
+                )}
               </span>
-            )}
+            ))}
           </li>
         ))}
       </ul>

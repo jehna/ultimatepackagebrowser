@@ -8,18 +8,24 @@ const Package = ({ pack, setCurPackage, listAll, exists }) => {
     return (
       <div>
         <p>Package you selected is not available in the status file. This is most likely due to missing dependency</p>
-        <button onClick={listAll}>Back to full listing</button>
+        <button onClick={listAll}>&larr; Back to full listing</button>
       </div>
     )
   } else {
     return (
       <div>
-        <button onClick={listAll}>Back to full listing</button>
-        <h2>{pack.name}</h2>
+        <button className={"button"} onClick={listAll}>&larr; Back to full listing</button>
+        <div className={"colored package-title"}>
+          <h2 className={""}>{pack.name}</h2>
+        </div>
 
+
+        <h4>Description</h4>
         <p>{pack.description}</p>
 
+        <h4>Backwards dependencies</h4>
         <PackageDependencyList packList={pack.dependencies} setCurPackage={setCurPackage} exists={exists} />
+        <h4>Forwards dependencies</h4>
         <PackageDependencyList packList={pack.forwardDependencies} setCurPackage={setCurPackage} exists={exists} />
       </div>
     );
