@@ -39,26 +39,31 @@ function parseStatusFile(filePath, writeLocation) {
     if (completeValue.startsWith("Package: ")) {
       current.name = completeValue.slice(9);
     } else if (completeValue.startsWith("Description: ")) {
-
       // Separate description title from the body, could be done more elegantly
-      let descriptionTitle = completeValue.slice(13).split("\n")[0]
-      current.descriptionTitle = descriptionTitle
-      current.description = completeValue.slice(13+descriptionTitle.length + 2);
+      let descriptionTitle = completeValue.slice(13).split("\n")[0];
+      current.descriptionTitle = descriptionTitle;
+      current.description = completeValue.slice(13 + descriptionTitle.length + 2);
     } else if (completeValue.startsWith("Depends: ")) {
-
       // Convert string into a 2D array of dependencies
       let filtered = completeValue
         .slice(9)
         .split(",")
-        .map(x => x.split("|").map(x => x.trim().split(" ")[0]))
+        .map(x => x.split("|").map(x => x.trim().split(" ")[0]));
 
       //There are duplicate values due to omitted version numbers, following makes array distinct
-      const setArray = new Set(filtered.map(x => JSON.stringify(x)))
+      const setArray = new Set(filtered.map(x => JSON.stringify(x)));
       current.dependencies = current.dependencies.concat([...setArray].map(x => JSON.parse(x)));
+
     } else if (completeValue === "") {
       // Empty line means end of current package, save result and initialize next one
       packages.push(current);
-      current = current = { name: "", descriptionTitle: "", description: "", dependencies: [], forwardDependencies: [] };
+      current = current = {
+        name: "",
+        descriptionTitle: "",
+        description: "",
+        dependencies: [],
+        forwardDependencies: [],
+      };
     }
 
     stepIterator();
@@ -71,7 +76,7 @@ function parseStatusFile(filePath, writeLocation) {
         // Not all dependencies are necessarily installed so we have to check for it
         let dependency = packages.find(x => x.name === dep);
         if (dependency !== undefined) dependency.forwardDependencies.push([pac.name]);
-      })
+      });
     });
   });
 
