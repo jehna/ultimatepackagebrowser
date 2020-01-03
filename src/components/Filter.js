@@ -14,12 +14,12 @@ const Filter = ({ completePackageList, packageList, setPackageList }) => {
         <input onChange={handleOnchange} />
       </div>
       {completePackageList.length !== 0 && packageList.length === 0 && (
-        <div className={"card"}>
+        <div>
           <p>No packages match the filter</p>
         </div>
       )}
       {completePackageList.length === 0 && (
-        <div className={"card"}>
+        <div>
           <p>Retrieving packages</p>
         </div>
       )}
