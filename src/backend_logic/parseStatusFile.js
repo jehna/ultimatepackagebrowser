@@ -41,12 +41,14 @@ function parseStatusFile(filePath, writeLocation) {
     } else if (completeValue.startsWith("Description: ")) {
       current.description = completeValue.slice(13);
     } else if (completeValue.startsWith("Depends: ")) {
-      current.dependencies = current.dependencies.concat(
-        completeValue
-          .slice(9)
-          .split(",")
-          .map(x => x.split(" ").filter(x => x !== "")[0]),
-      );
+
+      // Convert string into a 2D array of dependencies
+      let filtered = completeValue
+        .slice(9)
+        .split(",")
+        .map(x => x.split("|").map(x => x.trim().split(" ")[0]))
+
+      current.dependencies = current.dependencies.concat([...new Set(filtered)]);
     } else if (completeValue === "") {
       // Empty line means end of current package, save result and initialize next one
       packages.push(current);
@@ -65,13 +67,13 @@ function parseStatusFile(filePath, writeLocation) {
     });
   });
 
-  packages = packages.sort((a,b) => a.name > b.name ? 1 : -1)
+  packages = packages.sort((a, b) => (a.name > b.name ? 1 : -1));
 
-  fs.writeFile(writeLocation,JSON.stringify(packages),"utf8", err => {
+  fs.writeFile(writeLocation, JSON.stringify(packages), "utf8", err => {
     if (err) {
-      console.log(err)
+      console.log(err);
     }
-  })
+  });
 }
 
 module.exports.parseStatusFile = parseStatusFile;

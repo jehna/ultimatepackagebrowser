@@ -1,17 +1,31 @@
 import React from "react";
-import PackageNameList from "./PackageNameList";
+import PackageDependencyList from "./PackageDependencyList";
 
-const Package = ({ pack, setCurPackage }) => {
-  return (
-    <div>
-      <h2>{pack.name}</h2>
+const Package = ({ pack, setCurPackage, listAll, exists }) => {
 
-      <p>pack.description</p>
+  if (pack === undefined) {
+    // Handle links leading to missing dependencies
+    return (
+      <div>
+        <p>Package you selected is not available in the status file. This is most likely due to missing dependency</p>
+        <button onClick={listAll}>Back to full listing</button>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <button onClick={listAll}>Back to full listing</button>
+        <h2>{pack.name}</h2>
 
-      <PackageNameList packList={pack.dependencies} setCurPackage={setCurPackage} />
-      <PackageNameList packList={pack.forwardDependencies} setCurPackage={setCurPackage} />
-    </div>
-  );
+        <p>{pack.description}</p>
+
+        <PackageDependencyList packList={pack.dependencies} setCurPackage={setCurPackage} exists={exists} />
+        <PackageDependencyList packList={pack.forwardDependencies} setCurPackage={setCurPackage} exists={exists} />
+      </div>
+    );
+  }
+
+
 };
 
 export default Package;
