@@ -4,7 +4,7 @@ const path = require("path");
 const parser = require("./src/backend_logic/parseStatusFile")
 
 
-let portNumber = 3001;
+let portNumber = 3000;
 let useMockup = true;
 let filePath = useMockup ? "./status.mockup" : "/var/lib/dpkg/status";
 let writeLocation = "./build/data.json";

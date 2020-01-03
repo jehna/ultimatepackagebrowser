@@ -6,7 +6,7 @@ const PackageList = ({ packList, setCurPackage }) => {
       <ul>
         {packList.map(pack => (
           <li key={pack.name}>
-            <button className={"button"} onClick={() => setCurPackage(pack.name)}>
+            <button className={"button constant-width"} onClick={() => setCurPackage(pack.name)}>
               {pack.name}
             </button>
           </li>
