@@ -1,8 +1,11 @@
 const fs = require("fs");
-let useMockup = true;
 
-function parseStatusFile() {
-  let filePath = useMockup ? "./status.mockup" : "/var/lib/dpkg/status";
+/**
+ * Parses the status file in given path and exports the simplified json representation
+ * @param filePath where to read from
+ * @param writeLocation where to write to
+ */
+function parseStatusFile(filePath, writeLocation) {
   let packages = [];
 
   // Create iterator of the file so we can consume it with next()
@@ -62,5 +65,13 @@ function parseStatusFile() {
     });
   });
 
-  return packages;
+  packages = packages.sort((a,b) => a.name > b.name ? 1 : -1)
+
+  fs.writeFile(writeLocation,JSON.stringify(packages),"utf8", err => {
+    if (err) {
+      console.log(err)
+    }
+  })
 }
+
+module.exports.parseStatusFile = parseStatusFile;
