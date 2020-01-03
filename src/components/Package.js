@@ -20,12 +20,12 @@ const Package = ({ pack, setCurPackage, listAll, exists }) => {
         </div>
 
 
-        <h4>Description</h4>
+        <h4>{pack.descriptionTitle}</h4>
         <p>{pack.description}</p>
 
-        <h4>Backwards dependencies</h4>
+        <h4>Backward dependencies:</h4>
         <PackageDependencyList packList={pack.dependencies} setCurPackage={setCurPackage} exists={exists} />
-        <h4>Forwards dependencies</h4>
+        <h4>Forward dependencies:</h4>
         <PackageDependencyList packList={pack.forwardDependencies} setCurPackage={setCurPackage} exists={exists} />
       </div>
     );
