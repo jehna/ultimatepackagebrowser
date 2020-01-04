@@ -4,7 +4,7 @@ const path = require("path");
 const parser = require("./src/backend_logic/parseStatusFile")
 
 
-let portNumber = 3000;
+let portNumber = process.env.PORT || 3000;
 let useMockup = true;
 let filePath = useMockup ? "./status.mockup" : "/var/lib/dpkg/status";
 let writeLocation = "./build/data.json";
@@ -36,10 +36,8 @@ let server = http.createServer((request, response) => {
   fs.readFile(filePath, (error, content) => {
     if (error) {
       if (error.code == "ENOENT") {
-        fs.readFile("./build/404.html", function(error, content) {
-          response.writeHead(404, { "Content-Type": "text/html" });
-          response.end(content, "utf-8");
-        });
+        response.writeHead(404, { "Content-Type": "text/html" });
+        response.end("Page not found, error 404", "utf-8");
       } else {
         response.writeHead(500);
         response.end("Internal server error: " + error.code);
