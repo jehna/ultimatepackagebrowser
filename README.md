@@ -12,9 +12,11 @@ backward dependencies.
 
 1. Make sure you have [Node.js](https://nodejs.org/en/) installed
 2. Clone this repository
-3. Go to project root and run `npm run build`
-4. In `server.js` file you can choose to use mockup status file or the one located in `/var/lib/dpkg/status` by changing the variable `useMockup`
-5. Run `node server.js` to start the app 
+3. Go to project root and run `npm install`
+4. In project root run `npm run build`
+5. In `server.js` file you can choose to use mockup status file or the one located in `/var/lib/dpkg/status` by changing the variable `useMockup`
+6. Run `node server.js` to start the app 
+7. Go to (http://localhost:3000/)
 
 ### About the design decisions 
 
@@ -28,7 +30,7 @@ This project is written in rather modern react, for example component states are
 
 ### Backend
 
-Backend is a simple solution written in pure nodejs.
+The backend is a simple solution written in pure nodejs.
 This should be sufficient as this application is mainly used to browse packages of one's own machine. 
 If this was a public website used by a large audience, a more sophisticated solution should be implemented. 
 All the parsing of the status file is done here and frontend is served with json data it may use directly. 
