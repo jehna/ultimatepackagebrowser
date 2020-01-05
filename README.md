@@ -25,7 +25,6 @@ The project was designed to use minimal external dependencies as per assignment 
 The only dependency is the react library used to build the frontend. 
 It was chosen due to its relevancy in modern web development as well as its suitability for creating this kind of single page app. 
 This project is written in rather modern react, for example component states are done with hooks instead of the traditional class component method. 
-Frontend is 
 
 ### Backend
 
