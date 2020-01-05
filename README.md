@@ -1,6 +1,6 @@
 ## Ultimate package browser
 
-##### *This project is Reaktor summer developer 2020 a pre-assignment*
+##### *This project is a Reaktor summer developer 2020 pre-assignment*
 
 
 
@@ -23,7 +23,7 @@ The project was designed to use minimal external dependencies as per assignment 
 ### Frontend
 
 The only dependency is the react library used to build the frontend. 
-It was chosen due to its relevancy in modern web development as well as its suitability for creating this kind of single page app. 
+React was chosen due to its relevancy in modern web development as well as its suitability for creating this kind of single page app. 
 This project is written in rather modern react, for example component states are done with hooks instead of the traditional class component method. 
 
 ### Backend
