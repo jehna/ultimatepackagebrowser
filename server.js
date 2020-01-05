@@ -65,4 +65,4 @@ fs.watch(filePath, (event, filename) => {
 // Parse status file once when starting server
 parser.parseStatusFile(filePath, writeLocation);
 server.listen(portNumber);
-console.log(`Server listening for port ${portNumber}`);
+console.log(`Server listening on port ${portNumber}`);

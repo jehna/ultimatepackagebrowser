@@ -15,7 +15,7 @@ backward dependencies.
 3. Go to project root and run `npm install`
 4. In project root run `npm run build`
 5. In `server.js` file you can choose to use mockup status file or the one located in `/var/lib/dpkg/status` by changing the variable `useMockup`
-6. Run `node server.js` to start the app 
+6. Run `npm start` to start the app 
 7. Go to (http://localhost:3000/)
 
 ### About the design decisions 
