@@ -1,6 +1,6 @@
-##Ultimate package browser
+## Ultimate package browser
 
-#####*This project is Reaktor summer developer 2020 a pre-assignment*
+##### *This project is Reaktor summer developer 2020 a pre-assignment*
 
 
 
