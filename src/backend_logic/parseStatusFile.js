@@ -9,11 +9,11 @@ function parseStatusFile(filePath, writeLocation) {
   let packages = [];
 
   // Create iterator of the file so we can consume it with next()
-  let fileIterator = fs
+  let fileString = fs
     .readFileSync(filePath)
     .toString()
-    .split("\r\n")
-    [Symbol.iterator]();
+
+  let fileIterator = fileString.split(getLineBreak(fileString))[Symbol.iterator]()
 
   // keep track of current line and next line (for multiline values)
   let line = fileIterator.next();
@@ -50,8 +50,8 @@ function parseStatusFile(filePath, writeLocation) {
         .split(",")
         .map(x => x.split("|").map(x => x.trim().split(" ")[0]));
 
-      //There are duplicate values due to omitted version numbers, following makes array distinct
-      const setArray = new Set(filtered.map(x => JSON.stringify(x)));
+      //There are duplicate values due to omitted version numbers, following makes array distinct and sorts it
+      const setArray = new Set(filtered.map(x => JSON.stringify(x)).sort());
       current.dependencies = current.dependencies.concat([...setArray].map(x => JSON.parse(x)));
 
     } else if (completeValue === "") {
@@ -87,6 +87,26 @@ function parseStatusFile(filePath, writeLocation) {
       console.log(err);
     }
   });
+}
+
+
+// Detecting the linebreak used, just in case.
+function getLineBreak(str) {
+  const lfi = str.indexOf("\n", 1)
+  if (lfi === -1 ) {
+    if (str.indexOf("\r") !== -1) {
+      return "\r"
+    } else {
+      return "\n"
+    }
+  } else if (str[lfi - 1] === "\r") {
+    return "\r\n"
+  } else {
+    return "\n"
+  }
+
+
+
 }
 
 module.exports.parseStatusFile = parseStatusFile;
