@@ -39,7 +39,8 @@ As an added feature, the status file is tracked for any changes and new data ser
 
 ### Possible future development directions (not including new features)
 
-* Allow more external dependencies for easier implementation of features. 
+* Allow more external dependencies for easier implementation of features.
+* Add tests. 
 * Responsive design for frontend to enable mobile support.
 * Better error handling, especially if the app was to grow bigger.
 * Some of the frontend components might be too big, these could be refactored.
