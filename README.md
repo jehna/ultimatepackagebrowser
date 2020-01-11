@@ -14,17 +14,19 @@ backward dependencies.
 2. Clone this repository
 3. Go to project root and run `npm install`
 4. In project root run `npm run build`
-5. In `server.js` file you can choose to use mockup status file or the one located in `/var/lib/dpkg/status` by changing the variable `useMockup`
+5. In `index.js` file in project root you can choose to use mockup status file or the one located in `/var/lib/dpkg/status` by changing the variable `useMockup`
 6. Run `npm start` to start the app 
 7. Go to (http://localhost:3000/)
 
 ### About the design decisions 
 
-The project was designed to use minimal external dependencies as per assignment instructions.
+The project was designed to use minimal external dependencies as per assignment instructions. 
+The only 1st order dependency is react. It of course has a number of transitive dependencies that can't really be avoided if react is used.
+Usage of these transitive dependencies is limited to building the minified react production code.
 
 ### Frontend
 
-The only dependency is the react library used to build the frontend. 
+React library is used to build the frontend. 
 React was chosen due to its relevancy in modern web development as well as its suitability for creating this kind of single page app. 
 This project is written in rather modern react, for example component states are done with hooks instead of the traditional class component method. 
 

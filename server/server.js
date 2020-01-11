@@ -1,13 +1,6 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const parser = require("./src/backend_logic/parseStatusFile")
-
-
-let portNumber = process.env.PORT || 3000;
-let useMockup = true;
-let filePath = useMockup ? "./status.mockup" : "/var/lib/dpkg/status";
-let writeLocation = "./build/data.json";
 
 let getContentType = {
   ".html": "text/html",
@@ -20,7 +13,7 @@ let getContentType = {
   ".svg": "image/svg+xml",
 };
 
-let server = http.createServer((request, response) => {
+const server = http.createServer((request, response) => {
   console.log(request.method + ": " + request.url);
 
   // Production files are in build folder
@@ -31,7 +24,7 @@ let server = http.createServer((request, response) => {
     filePath = "./build/index.html";
   }
 
-  let contentType = getContentType[String(path.extname(filePath)).toLowerCase()] || "unknown";
+  let contentType = getContentType[String(path.extname(filePath)).toLowerCase()] || "application/octet-stream";
 
   fs.readFile(filePath, (error, content) => {
     if (error) {
@@ -49,20 +42,4 @@ let server = http.createServer((request, response) => {
   });
 });
 
-// Watch the status file for changes and only parse it when needed
-// Wait is to avoid calling parser multiple times for single change operation
-let fsWait = false;
-fs.watch(filePath, (event, filename) => {
-  if (filename && !fsWait) {
-    fsWait = true;
-    setTimeout(() => (fsWait = false), 100);
-    parser.parseStatusFile(filePath, writeLocation);
-    console.log("Reparsed the file");
-  }
-});
-
-
-// Parse status file once when starting server
-parser.parseStatusFile(filePath, writeLocation);
-server.listen(portNumber);
-console.log(`Server listening on port ${portNumber}`);
+module.exports = server;

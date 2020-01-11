@@ -11,7 +11,9 @@
     "react-scripts": "3.3.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
+    "watch": "nodemon index.js",
+    "react": "react-scripts build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -32,6 +34,10 @@
     ]
   },
   "devDependencies": {
+    "nodemon": "^2.0.2",
     "thread-sleep": "^2.2.0"
+  },
+  "nodemonConfig": {
+    "ignore": ["build/data.json"]
   }
 }
