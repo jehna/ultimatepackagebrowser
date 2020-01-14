@@ -49,8 +49,8 @@ function parseStatusFile(filePath, writeLocation) {
         .map(x => x.split("|").map(x => x.trim().split(" ")[0]));
 
       //There are duplicate values due to omitted version numbers, following makes the array distinct and sorts it
-      const setArray = new Set(filtered.map(x => JSON.stringify(x)).sort());
-      current.dependencies = current.dependencies.concat([...setArray].map(x => JSON.parse(x)));
+      const setArray = new Set(filtered.map(x => JSON.stringify(x)));
+      current.dependencies = current.dependencies.concat([...setArray].sort().map(x => JSON.parse(x)));
     } else if (completeValue === "") {
       // Empty line means end of current package, save result and initialize next one
       packages.push(current);

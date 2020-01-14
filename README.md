@@ -33,15 +33,15 @@ This project is written in rather modern react, for example component states are
 ### Backend
 
 The backend is a simple solution written in pure nodejs.
-This should be sufficient as this application is mainly used to browse packages of one's own machine. 
+This should be sufficient as this application is mainly used to browse packages on one's own machine. 
 If this was a public website used by a large audience, a more sophisticated solution should be implemented. 
-All the parsing of the status file is done here and frontend is served with json data it may use directly. 
-As an added feature, the status file is tracked for any changes and new data served to frontend automatically.
-(Although this does require a page refresh)
+All the parsing of the status file is done here and frontend is served with json data it can use directly. 
+As an added feature, the status file is tracked for any changes and parsing is done only when needed.
 
 ### Possible future development directions (not including new features)
 
 * Allow more external dependencies for easier implementation of features.
+* TypeScript
 * Add tests. 
 * Responsive design for frontend to enable mobile support.
 * Better error handling, especially if the app was to grow bigger.
