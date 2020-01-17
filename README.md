@@ -2,7 +2,7 @@
 
 ##### *This project is a Reaktor summer developer 2020 pre-assignment*
 
-
+##### *There is now a version that uses TypeScript which can be found here: https://github.com/jaakkojakara/ultimatepackagebrowser_TS*
 
 This application lets you browse the `/var/lib/dpkg/status` file that holds information about packages installed on the system.
 You can filter the package list and inspect individual packages to see their descriptions as well as forward and
