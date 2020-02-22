@@ -1,7 +1,7 @@
 import React from "react";
 import PackageDependencyList from "./PackageDependencyList";
 
-const Package = ({ pack, setCurPackage, listAll, exists }) => {
+const Package = ({ pack, setPackage, listAll, exists }) => {
   return (
     <div className={"card package"}>
       <button className={"button constant-width"} onClick={listAll}>
@@ -18,9 +18,9 @@ const Package = ({ pack, setCurPackage, listAll, exists }) => {
       <hr />
 
       <h4>Backward dependencies:</h4>
-      <PackageDependencyList packList={pack.dependencies} setCurPackage={setCurPackage} exists={exists} />
+      <PackageDependencyList packList={pack.dependencies} setPackage={setPackage} exists={exists} />
       <h4>Forward dependencies:</h4>
-      <PackageDependencyList packList={pack.forwardDependencies} setCurPackage={setCurPackage} exists={exists} />
+      <PackageDependencyList packList={pack.forwardDependencies} setPackage={setPackage} exists={exists} />
     </div>
   );
 };

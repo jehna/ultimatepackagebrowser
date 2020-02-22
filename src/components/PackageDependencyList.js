@@ -1,6 +1,6 @@
 import React from "react";
 
-const PackageDependencyList = ({ packList, setCurPackage, exists }) => {
+const PackageDependencyList = ({ packList, setPackage, exists }) => {
   return (
     <div>
       <ul>
@@ -9,7 +9,7 @@ const PackageDependencyList = ({ packList, setCurPackage, exists }) => {
             {packs.map((pack, index) => (
               <span key={pack}>
                 {exists(pack) ? (
-                  <button className={"button constant-width"} key={index} onClick={() => setCurPackage(pack)}>
+                  <button className={"button constant-width"} key={index} onClick={() => setPackage(pack)}>
                     {pack}
                   </button>
                 ) : (

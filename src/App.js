@@ -39,7 +39,7 @@ function App() {
     return (
       <FrontPage
         completeList={completeList}
-        setCurPackage={setPackage}
+        setPackage={setPackage}
         setPackageList={setPackageList}
         packageList={packageList}
       />
@@ -47,7 +47,7 @@ function App() {
   } else {
     return (
       <div className={"package-container"}>
-        <Package pack={curPackage} setCurPackage={setPackage} listAll={listAll} exists={exists} />
+        <Package pack={curPackage} setPackage={setPackage} listAll={listAll} exists={exists} />
       </div>
     );
   }
