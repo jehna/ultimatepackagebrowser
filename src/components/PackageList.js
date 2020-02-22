@@ -1,12 +1,12 @@
 import React from "react";
 
-const PackageList = ({ packList, setCurPackage }) => {
+const PackageList = ({ packList, setPackage }) => {
   return (
     <div>
       <ul>
         {packList.map(pack => (
           <li key={pack.name}>
-            <button className={"button constant-width"} onClick={() => setCurPackage(pack.name)}>
+            <button className={"button constant-width"} onClick={() => setPackage(pack.name)}>
               {pack.name}
             </button>
           </li>

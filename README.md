@@ -2,7 +2,9 @@
 
 ##### *This project is a Reaktor summer developer 2020 pre-assignment*
 
-##### *There is now a version that uses TypeScript which can be found here: https://github.com/jaakkojakara/ultimatepackagebrowser_TS*
+#### Version 2.0
+Added unit tests for the backend and refactored it completely. Also few integration tests for the automated status file parsing 
+
 
 This application lets you browse the `/var/lib/dpkg/status` file that holds information about packages installed on the system.
 You can filter the package list and inspect individual packages to see their descriptions as well as forward and
@@ -22,7 +24,6 @@ backward dependencies.
 
 The project was designed to use minimal external dependencies as per assignment instructions. 
 The only 1st order dependency is react. It of course has a number of transitive dependencies that can't really be avoided if react is used.
-Usage of these transitive dependencies is limited to building the minified react production code.
 
 ### Frontend
 

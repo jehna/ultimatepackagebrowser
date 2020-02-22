@@ -14,7 +14,7 @@ function App() {
     return completeList.find(x => x.name === name) !== undefined;
   }
 
-  function setCurPackage(name) {
+  function setPackage(name) {
     _setCurPackage(completeList.find(x => x.name === name));
     window.scrollTo(0, 0);
   }
@@ -39,7 +39,7 @@ function App() {
     return (
       <FrontPage
         completeList={completeList}
-        setCurPackage={setCurPackage}
+        setCurPackage={setPackage}
         setPackageList={setPackageList}
         packageList={packageList}
       />
@@ -47,7 +47,7 @@ function App() {
   } else {
     return (
       <div className={"package-container"}>
-        <Package pack={curPackage} setCurPackage={setCurPackage} listAll={listAll} exists={exists} />
+        <Package pack={curPackage} setCurPackage={setPackage} listAll={listAll} exists={exists} />
       </div>
     );
   }

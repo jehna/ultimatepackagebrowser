@@ -21,7 +21,7 @@ const FrontPage = props => {
       <div className={"column"} />
 
       <div className={"column transparent"}>
-        <PackageList packList={props.packageList} setCurPackage={props.setCurPackage} />
+        <PackageList packList={props.packageList} setPackage={props.setPackage} />
       </div>
     </div>
   );
